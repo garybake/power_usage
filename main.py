@@ -80,13 +80,13 @@ def main():
     data = get_electricity_usage()
     store(data)
 
-    # next_url = data['next']
-    # while next_url is not None:
-    #     request_count += 1
-    #     data = get_electricity_usage(next_url)
-    #     store(data)
-    #     next_url = data['next']
-    #     print(f'requests: {request_count}')
+    next_url = data['next']
+    while next_url is not None:
+        request_count += 1
+        data = get_electricity_usage(next_url)
+        store(data)
+        next_url = data['next']
+        print(f'requests: {request_count}')
 
 if __name__ == '__main__':
     if not os.path.exists(os.getenv('DB_FILE')):
